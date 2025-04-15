@@ -5,7 +5,8 @@ namespace Kdevaulo.MageDefend.Presentation
 {
     public class GameContext : MonoBehaviour
     {
-        [field: SerializeField] public Transform PlayerPersecutor { get; private set; }
+        
+        [field: SerializeField] public Camera Camera { get; private set; }
         [field: SerializeField] public PlayerInput PlayerInput { get; private set; }
         [field: SerializeField] public Transform Parent { get; private set; }
 
@@ -18,5 +19,6 @@ namespace Kdevaulo.MageDefend.Presentation
         [field: SerializeField] public EnemyView EnemyPrefab { get; private set; }
 
         [field: SerializeField] public CameraFollower CameraFollower { get; private set; }
+        [field: SerializeField] public SpawnZone SpawnZone { get; private set; }
     }
 }

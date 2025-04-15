@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 7449359}
   - component: {fileID: 7449361}
   - component: {fileID: 7449360}
+  - component: {fileID: 7449363}
   - component: {fileID: 7449362}
   m_Layer: 0
   m_Name: EntryPoint
@@ -184,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed22f730d71d435db171a0265da148d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerPersecutor>k__BackingField: {fileID: 0}
+  <Camera>k__BackingField: {fileID: 963194227}
   <PlayerInput>k__BackingField: {fileID: 7449362}
   <Parent>k__BackingField: {fileID: 7449359}
   <SpellsData>k__BackingField: {fileID: 11400000, guid: 45b3aed3246c96e418f186e8701d5c1f, type: 2}
@@ -194,6 +195,7 @@ MonoBehaviour:
   <PlayerPrefab>k__BackingField: {fileID: 8437655960535279296, guid: 24064e7954285fb4a8314949341dd687, type: 3}
   <EnemyPrefab>k__BackingField: {fileID: 8135752686882428940, guid: 3a43c3257db656448b21b9e581b2a876, type: 3}
   <CameraFollower>k__BackingField: {fileID: 963194229}
+  <SpawnZone>k__BackingField: {fileID: 7449363}
 --- !u!114 &7449362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +226,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7449363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7449358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461c3f64b20547159f58bd56be8b8bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 60, y: 0, z: 60}
 --- !u!1 &59265711
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +294,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &59265714
@@ -587,7 +604,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &793280508
@@ -693,7 +710,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &894595353
@@ -805,7 +822,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -906,7 +923,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1877620522
