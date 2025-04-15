@@ -10,10 +10,11 @@ namespace Kdevaulo.MageDefend.Presentation
     {
         private const int MaxEnemiesCount = 10;
 
+        private EnemiesController _enemiesController;
         private PlayerController _playerController;
         private SpellController _spellController;
 
-        private EnemiesController _enemiesController;
+        private CameraFollower _cameraFollower;
         private InputSystem _playerInput;
 
         private SpellsModel _spellsModel;
@@ -24,16 +25,19 @@ namespace Kdevaulo.MageDefend.Presentation
             var playerDataset = context.PlayerData.Datasets.FirstOrDefault();
             Assert.IsNotNull(playerDataset);
 
-            var player = UnityEngine.Object.Instantiate(context.PlayerPrefab, context.Parent);
+            var playerView = UnityEngine.Object.Instantiate(context.PlayerPrefab, context.Parent);
             _playerModel = new UnitModel(playerDataset);
             _playerInput = new InputSystem(context.PlayerInput);
-            _playerController = new PlayerController(_playerInput, _playerModel, player);
+            _playerController = new PlayerController(_playerInput, _playerModel, playerView);
 
             _spellsModel = new SpellsModel(context.SpellsData.GetSpellParams());
             _spellController = new SpellController(_playerInput, _spellsModel, context.SpellsData,
                 context.Parent, _playerController);
 
             _enemiesController = new EnemiesController(context.EnemiesData, context.EnemiesVisualData);
+
+            _cameraFollower = context.CameraFollower;
+            _cameraFollower.SetTarget(playerView.transform);
 
             _playerController.Initialize();
             _spellController.Initialize();
@@ -54,6 +58,7 @@ namespace Kdevaulo.MageDefend.Presentation
             _enemiesController.Tick();
             _playerController.Tick();
             _spellController.Tick();
+            _cameraFollower.Tick();
         }
     }
 }

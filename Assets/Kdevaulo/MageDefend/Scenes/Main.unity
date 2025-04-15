@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed22f730d71d435db171a0265da148d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerPersecutor>k__BackingField: {fileID: 0}
   <PlayerInput>k__BackingField: {fileID: 7449362}
   <Parent>k__BackingField: {fileID: 7449359}
   <SpellsData>k__BackingField: {fileID: 11400000, guid: 45b3aed3246c96e418f186e8701d5c1f, type: 2}
@@ -192,6 +193,7 @@ MonoBehaviour:
   <EnemiesVisualData>k__BackingField: {fileID: 11400000, guid: 0eea46a510e27f14992761c9fdd4b7ac, type: 2}
   <PlayerPrefab>k__BackingField: {fileID: 8437655960535279296, guid: 24064e7954285fb4a8314949341dd687, type: 3}
   <EnemyPrefab>k__BackingField: {fileID: 8135752686882428940, guid: 3a43c3257db656448b21b9e581b2a876, type: 3}
+  <CameraFollower>k__BackingField: {fileID: 963194229}
 --- !u!114 &7449362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +757,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -836,6 +839,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7449359}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd902d65f884c20b08898cc4206ce88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: {x: 0, y: 7.91, z: -8.41}
+  _camera: {fileID: 963194227}
 --- !u!1 &1877620519
 GameObject:
   m_ObjectHideFlags: 0
