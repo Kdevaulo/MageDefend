@@ -14,8 +14,8 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private readonly IPlayerContextProvider _playerContextProvider;
         private readonly SpellsModel _spellsModel;
-        private readonly InputSystem _input;
         private readonly SpellsData _spellsData;
+        private readonly InputSystem _input;
         private readonly Transform _parent;
         private readonly Transform _target;
 

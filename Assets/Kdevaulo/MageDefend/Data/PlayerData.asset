@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   Datasets:
-  - Hp: 100
+  - Id: Mage
+    Hp: 100
     Protection: 0.5
     MoveSpeed: 10
     Damage: 0

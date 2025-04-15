@@ -11,6 +11,7 @@ namespace Kdevaulo.MageDefend.Presentation
         [field: SerializeField] public SpellsData SpellsData { get; private set; }
         [field: SerializeField] public UnitsData EnemiesData { get; private set; }
         [field: SerializeField] public UnitsData PlayerData { get; private set; }
+        [field: SerializeField] public EnemyData EnemiesVisualData { get; private set; }
 
         [field: SerializeField] public PlayerView PlayerPrefab { get; private set; }
         [field: SerializeField] public EnemyView EnemyPrefab { get; private set; }

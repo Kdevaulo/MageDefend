@@ -4,6 +4,7 @@ namespace Kdevaulo.MageDefend.Model
 {
     public class UnitModel
     {
+        public string Id { get; private set; }
         public Vector3 Position { get; private set; }
         public float Protection { get; }
         public float MoveSpeed { get; }

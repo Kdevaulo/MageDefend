@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d38e033fb443839d2abc870cb5596e, type: 3}
+  m_Name: EnemiesVisualData
+  m_EditorClassIdentifier: 
+  <EnemyConfigCollection>k__BackingField:
+  - Id: Zombie
+    EnemyPrefab: {fileID: 8135752686882428940, guid: 3a43c3257db656448b21b9e581b2a876, type: 3}
+  - Id: Lord
+    EnemyPrefab: {fileID: 3733347317423120605, guid: 3abff942f30e41746b306dcd8bd09daa, type: 3}
+  - Id: Unicorn
+    EnemyPrefab: {fileID: 5149467758218513380, guid: 12e6f5aa37e17c544868ac5b3022d436, type: 3}

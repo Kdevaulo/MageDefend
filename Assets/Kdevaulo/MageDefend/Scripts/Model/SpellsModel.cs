@@ -6,17 +6,12 @@ namespace Kdevaulo.MageDefend.Model
     {
         private Dictionary<string, Spell> _spellParams = new Dictionary<string, Spell>();
 
-        public void Initialize(SpellParams[] spellParams)
+        public SpellsModel(SpellParams[] spellParams)
         {
             foreach (var item in spellParams)
             {
                 _spellParams[item.Id] = item.Spell;
             }
-        }
-
-        public void Dispose()
-        {
-            _spellParams.Clear();
         }
 
         public bool TryCreateSpell(string id, out SpellModel model)
