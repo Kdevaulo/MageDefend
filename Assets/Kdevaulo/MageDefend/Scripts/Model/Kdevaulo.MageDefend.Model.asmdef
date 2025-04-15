@@ -1,0 +1,14 @@
+{
+    "name": "Kdevaulo.MageDefend.Model",
+    "rootNamespace": "Kdevaulo.MageDefend.Model",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

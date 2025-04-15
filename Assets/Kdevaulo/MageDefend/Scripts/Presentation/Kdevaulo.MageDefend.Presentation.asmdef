@@ -1,0 +1,17 @@
+{
+    "name": "Kdevaulo.MageDefend.Presentation",
+    "rootNamespace": "",
+    "references": [
+        "GUID:79b7585f4e411e148a1041ccb7492134",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
