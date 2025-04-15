@@ -32,12 +32,11 @@ namespace Kdevaulo.MageDefend.Presentation
         {
             if (_target != null)
             {
-                var direction = _target.position - _enemyModel.Position.ToUnity();
+                var direction = _target.position - _enemyView.transform.position;
 
                 if (direction.magnitude > MinFollowDistance)
                 {
-                    _enemyModel.Move(direction.normalized.ToNumerics() * Time.deltaTime);
-                    _enemyView.Move(_enemyModel.Position.ToUnity());
+                    _enemyView.Move(direction.normalized * _enemyModel.MoveSpeed);
                 }
             }
         }

@@ -21,10 +21,10 @@ MonoBehaviour:
   - Id: Lord
     Hp: 50
     Protection: 0.75
-    MoveSpeed: 7.5
+    MoveSpeed: 10
     Damage: 20
   - Id: Unicorn
     Hp: 75
     Protection: 1
-    MoveSpeed: 10
+    MoveSpeed: 15
     Damage: 15

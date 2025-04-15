@@ -50,10 +50,8 @@ namespace Kdevaulo.MageDefend.Presentation
                 var spellModel = spellPair.Key;
                 var spellView = spellPair.Value;
 
-                var step = Time.deltaTime * spellModel.MoveDirection;
-                spellModel.Move(step);
-
-                spellView.Move(spellModel.Position.ToUnity());
+                var step = Time.deltaTime * spellModel.MoveDirection * spellModel.MoveSpeed;
+                spellView.Move(step.ToUnity());
 
                 spellModel.DecreaseLifetime(Time.deltaTime);
 
@@ -83,8 +81,6 @@ namespace Kdevaulo.MageDefend.Presentation
                 var view = Object.Instantiate(prefab, targetPosition, Quaternion.identity, _parent);
 
                 spell.SetDirection(_playerContextProvider.GetDirection().ToNumerics());
-                spell.SetPosition(targetPosition.ToNumerics());
-
                 _launchedSpells.Add(spell, view);
             }
         }

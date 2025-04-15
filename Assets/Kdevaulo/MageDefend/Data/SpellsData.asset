@@ -15,7 +15,7 @@ MonoBehaviour:
   <Configs>k__BackingField:
   - SpellView: {fileID: 8338304740296814051, guid: 7cb636cb6768620479306752553eea83, type: 3}
     Spell:
-      MoveSpeed: 10
+      MoveSpeed: 50
       Lifetime: 2
       Cooldown: 1
       Damage: 10
@@ -23,7 +23,7 @@ MonoBehaviour:
     Id: Fireball
   - SpellView: {fileID: 8218112560930062190, guid: 631f899bca8d54d40b3c06626265d2f6, type: 3}
     Spell:
-      MoveSpeed: 5
+      MoveSpeed: 20
       Lifetime: 5
       Cooldown: 1
       Damage: 20

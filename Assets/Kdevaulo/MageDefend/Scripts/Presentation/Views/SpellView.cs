@@ -8,7 +8,7 @@ namespace Kdevaulo.MageDefend.Presentation
 
         public void Move(Vector3 position)
         {
-            _rigidbody.MovePosition(position);
+            _rigidbody.MovePosition(_rigidbody.position + position);
         }
     }
 }

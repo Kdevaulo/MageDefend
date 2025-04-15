@@ -16,5 +16,5 @@ MonoBehaviour:
   - Id: Mage
     Hp: 100
     Protection: 0.5
-    MoveSpeed: 10
+    MoveSpeed: 15
     Damage: 0

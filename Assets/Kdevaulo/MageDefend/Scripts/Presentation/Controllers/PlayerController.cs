@@ -16,6 +16,7 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private Vector3Int _moveDirection;
         private Direction _currentDirection;
+        private Quaternion _rotation;
         private bool _canMove;
 
         public PlayerController(InputSystem playerInput, UnitModel playerModel, PlayerView playerView)
@@ -45,10 +46,11 @@ namespace Kdevaulo.MageDefend.Presentation
         {
             if (_canMove)
             {
-                var step = Time.deltaTime * _moveDirection.ToNumerics();
-                _playerModel.Move(step);
-                _playerView.Move(_playerModel.Position.ToUnity());
+                var velocity = _playerModel.MoveSpeed * (Vector3) _moveDirection;
+                _playerView.Move(velocity);
             }
+
+            _playerView.SetRotation(_rotation);
         }
 
         public Vector3 GetDirection()
@@ -72,8 +74,7 @@ namespace Kdevaulo.MageDefend.Presentation
             _canMove = true;
 
             _currentDirection = DirectionMap.GetDirection(roundedVector);
-            var rotation = DirectionMap.GetRotation(_currentDirection);
-            _playerView.Rotate(rotation);
+            _rotation = DirectionMap.GetRotation(_currentDirection);
         }
 
         private void CancelMove()

@@ -6,14 +6,14 @@ namespace Kdevaulo.MageDefend.Presentation
     {
         [SerializeField] private Rigidbody _rigidbody;
 
-        public void Move(Vector3 position)
+        public void Move(Vector3 velocity)
         {
-            _rigidbody.MovePosition(position);
+            _rigidbody.velocity = velocity;
         }
 
-        public void Rotate(Quaternion rotation)
+        public void SetRotation(Quaternion rotation)
         {
-            _rigidbody.rotation = rotation;
+            _rigidbody.rotation = rotation.normalized;
         }
     }
 }

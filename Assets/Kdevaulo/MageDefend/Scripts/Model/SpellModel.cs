@@ -6,7 +6,6 @@ namespace Kdevaulo.MageDefend.Model
     public class SpellModel
     {
         public Vector3 MoveDirection { get; private set; }
-        public Vector3 Position { get; private set; }
         public float MoveSpeed { get; }
         public float Cooldown { get; }
         public float Lifetime { get; private set; }
@@ -23,19 +22,9 @@ namespace Kdevaulo.MageDefend.Model
             Damage = parameters.Damage;
         }
 
-        public void Move(Vector3 step)
-        {
-            Position += step * MoveSpeed;
-        }
-
         public void SetDirection(Vector3 direction)
         {
             MoveDirection = direction;
-        }
-
-        public void SetPosition(Vector3 position)
-        {
-            Position = position;
         }
 
         public void DecreaseLifetime(float value)

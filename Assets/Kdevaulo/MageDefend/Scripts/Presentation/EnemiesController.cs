@@ -77,7 +77,6 @@ namespace Kdevaulo.MageDefend.Presentation
                 throw new Exception(nameof(EnemiesController));
 
             var model = new UnitModel(chosenData);
-            model.SetPosition(position.ToNumerics());
             var view = Object.Instantiate(item.EnemyPrefab, position, Quaternion.identity, _parent);
             var controller = new EnemyController(model, view);
 
