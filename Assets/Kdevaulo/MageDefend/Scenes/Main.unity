@@ -184,10 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed22f730d71d435db171a0265da148d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerInput>k__BackingField: {fileID: 7449362}
   <Parent>k__BackingField: {fileID: 7449359}
+  <SpellsData>k__BackingField: {fileID: 11400000, guid: 45b3aed3246c96e418f186e8701d5c1f, type: 2}
   <EnemiesData>k__BackingField: {fileID: 11400000, guid: b3972be89d8f8ad40b9afe0fe797b7c0, type: 2}
   <PlayerData>k__BackingField: {fileID: 11400000, guid: f7e95f08947fc4246bdc1cab00ae0392, type: 2}
-  <PlayerInput>k__BackingField: {fileID: 7449362}
   <PlayerPrefab>k__BackingField: {fileID: 8437655960535279296, guid: 24064e7954285fb4a8314949341dd687, type: 3}
   <EnemyPrefab>k__BackingField: {fileID: 8135752686882428940, guid: 3a43c3257db656448b21b9e581b2a876, type: 3}
 --- !u!114 &7449362

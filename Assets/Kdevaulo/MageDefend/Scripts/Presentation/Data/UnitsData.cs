@@ -7,6 +7,6 @@ namespace Kdevaulo.MageDefend.Presentation
     [CreateAssetMenu(fileName = nameof(UnitsData), menuName = nameof(MageDefend) + "/" + nameof(UnitsData))]
     public class UnitsData : ScriptableObject
     {
-        [field: SerializeField] public UnitDataset[] Datasets;
+        [field: SerializeField] public UnitConfig[] Datasets;
     }
 }

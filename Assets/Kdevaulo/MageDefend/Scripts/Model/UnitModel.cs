@@ -10,13 +10,13 @@ namespace Kdevaulo.MageDefend.Model
         public float Damage { get; }
         public float Hp { get; }
 
-        public UnitModel(UnitDataset dataset)
+        public UnitModel(UnitConfig config)
         {
-            Protection = dataset.Protection;
-            MoveSpeed = dataset.MoveSpeed;
-            Position = dataset.Position;
-            Damage = dataset.Damage;
-            Hp = dataset.Hp;
+            Protection = config.Protection;
+            MoveSpeed = config.MoveSpeed;
+            Position = config.Position;
+            Damage = config.Damage;
+            Hp = config.Hp;
         }
 
         public void Move(Vector3 vector)

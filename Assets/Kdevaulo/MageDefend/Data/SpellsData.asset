@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ccf82cc9d24be09cf15f3e6f0a397d, type: 3}
+  m_Name: SpellsData
+  m_EditorClassIdentifier: 
+  <Configs>k__BackingField:
+  - SpellView: {fileID: 8338304740296814051, guid: 7cb636cb6768620479306752553eea83, type: 3}
+    Spell:
+      MoveSpeed: 10
+      Lifetime: 2
+      Cooldown: 1
+      Damage: 10
+      IsLocked: 0
+    Id: Fireball
+  - SpellView: {fileID: 8218112560930062190, guid: 631f899bca8d54d40b3c06626265d2f6, type: 3}
+    Spell:
+      MoveSpeed: 5
+      Lifetime: 5
+      Cooldown: 1
+      Damage: 20
+      IsLocked: 0
+    Id: ColdBall

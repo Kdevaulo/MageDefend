@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Kdevaulo.MageDefend.Presentation
 {
-    public class InputHandler
+    public class InputSystem
     {
         public event Action<Vector2> MovePerformed;
         public event Action MoveCanceled;
@@ -20,12 +20,12 @@ namespace Kdevaulo.MageDefend.Presentation
         public event Action AttackPerformed;
         public event Action AttackCanceled;
 
-        private readonly PlayerInput _playerInput;
+        private readonly UnityEngine.InputSystem.PlayerInput _playerInput;
 
         private readonly Dictionary<string, InputActionHandlers> _actionsMap =
             new Dictionary<string, InputActionHandlers>();
 
-        public InputHandler(PlayerInput playerInput)
+        public InputSystem(UnityEngine.InputSystem.PlayerInput playerInput)
         {
             _playerInput = playerInput;
         }

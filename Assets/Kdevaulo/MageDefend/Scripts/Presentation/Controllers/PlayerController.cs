@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Kdevaulo.MageDefend.Presentation
 {
-    public class PlayerController
+    public class PlayerController : IPlayerContextProvider
     {
-        private readonly InputHandler _inputHandler;
+        public Transform Target { get; }
+
+        private readonly InputSystem _playerInput;
         private readonly PlayerView _playerView;
         private readonly UnitModel _playerModel;
 
@@ -16,23 +18,27 @@ namespace Kdevaulo.MageDefend.Presentation
         private Direction _currentDirection;
         private bool _canMove;
 
-        public PlayerController(InputHandler inputHandler, UnitModel playerModel, PlayerView playerView)
+        public PlayerController(InputSystem playerInput, UnitModel playerModel, PlayerView playerView)
         {
-            _inputHandler = inputHandler;
+            _playerInput = playerInput;
             _playerModel = playerModel;
             _playerView = playerView;
+
+            Target = playerView.transform;
         }
 
         public void Initialize()
         {
-            _inputHandler.MovePerformed += Move;
-            _inputHandler.MoveCanceled += CancelMove;
+            _playerInput.MovePerformed += Move;
+            _playerInput.MoveCanceled += CancelMove;
+
+            _moveDirection = Vector3Int.forward;
         }
 
         public void Dispose()
         {
-            _inputHandler.MovePerformed -= Move;
-            _inputHandler.MoveCanceled -= CancelMove;
+            _playerInput.MovePerformed -= Move;
+            _playerInput.MoveCanceled -= CancelMove;
         }
 
         public void Tick()
@@ -43,6 +49,11 @@ namespace Kdevaulo.MageDefend.Presentation
                 _playerModel.Move(step);
                 _playerView.Move(_playerModel.Position.ToUnity());
             }
+        }
+
+        public Vector3 GetDirection()
+        {
+            return _moveDirection;
         }
 
         private void Move(Vector2 offset)
@@ -67,8 +78,6 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private void CancelMove()
         {
-            _moveDirection = Vector3Int.zero;
-            _currentDirection = Direction.None;
             _canMove = false;
         }
     }
