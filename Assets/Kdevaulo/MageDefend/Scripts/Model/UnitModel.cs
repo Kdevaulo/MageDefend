@@ -15,7 +15,6 @@ namespace Kdevaulo.MageDefend.Model
         {
             Protection = config.Protection;
             MoveSpeed = config.MoveSpeed;
-            Position = config.Position;
             Damage = config.Damage;
             Hp = config.Hp;
         }
@@ -23,6 +22,11 @@ namespace Kdevaulo.MageDefend.Model
         public void Move(Vector3 vector)
         {
             Position += vector * MoveSpeed;
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            Position = position;
         }
     }
 }

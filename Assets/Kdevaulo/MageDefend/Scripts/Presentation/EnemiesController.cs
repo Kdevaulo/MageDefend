@@ -13,6 +13,7 @@ namespace Kdevaulo.MageDefend.Presentation
 {
     public class EnemiesController
     {
+        private readonly IPlayerContextProvider _playerContextProvider;
         private readonly EnemyData _enemiesVisualData;
         private readonly UnitsData _unitsData;
         private readonly SpawnZone _spawnZone;
@@ -23,8 +24,9 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private int _maxCount;
 
-        public EnemiesController(GameContext gameContext)
+        public EnemiesController(GameContext gameContext, IPlayerContextProvider playerContextProvider)
         {
+            _playerContextProvider = playerContextProvider;
             _unitsData = gameContext.EnemiesData;
             _enemiesVisualData = gameContext.EnemiesVisualData;
             _spawnZone = gameContext.SpawnZone;
@@ -75,13 +77,14 @@ namespace Kdevaulo.MageDefend.Presentation
                 throw new Exception(nameof(EnemiesController));
 
             var model = new UnitModel(chosenData);
+            model.SetPosition(position.ToNumerics());
             var view = Object.Instantiate(item.EnemyPrefab, position, Quaternion.identity, _parent);
             var controller = new EnemyController(model, view);
 
             var enemy = new Enemy(model, view, controller);
             _activeEnemies.Add(enemy);
 
-            controller.Initialize();
+            controller.Initialize(_playerContextProvider.Target);
         }
 
         private Vector3 GetRandomPointOnEdge(Bounds bounds)
