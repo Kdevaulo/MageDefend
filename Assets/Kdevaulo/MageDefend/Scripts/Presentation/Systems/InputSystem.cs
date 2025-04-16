@@ -20,12 +20,12 @@ namespace Kdevaulo.MageDefend.Presentation
         public event Action AttackPerformed;
         public event Action AttackCanceled;
 
-        private readonly UnityEngine.InputSystem.PlayerInput _playerInput;
+        private readonly PlayerInput _playerInput;
 
         private readonly Dictionary<string, InputActionHandlers> _actionsMap =
             new Dictionary<string, InputActionHandlers>();
 
-        public InputSystem(UnityEngine.InputSystem.PlayerInput playerInput)
+        public InputSystem(PlayerInput playerInput)
         {
             _playerInput = playerInput;
         }

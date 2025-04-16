@@ -1,10 +1,7 @@
-﻿using System;
-
-namespace Kdevaulo.MageDefend.Model
+﻿namespace Kdevaulo.MageDefend.Model
 {
     public class UnitStat
     {
-        public event Action Changed;
         public float Value => _value;
 
         private float _value;
@@ -17,7 +14,6 @@ namespace Kdevaulo.MageDefend.Model
         public void Set(float value)
         {
             _value = value;
-            Changed?.Invoke();
         }
     }
 }

@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7ccf82cc9d24be09cf15f3e6f0a397d, type: 3}
-  m_Name: SpellsData
+  m_Name: SpellsConfig
   m_EditorClassIdentifier: 
   <Configs>k__BackingField:
   - SpellUIPrefab: {fileID: 8753742685954765270, guid: 066b76918a572f54a845b00e2875908a, type: 3}
     SpellPrefab: {fileID: 8338304740296814051, guid: 7cb636cb6768620479306752553eea83, type: 3}
-    Spell:
-      MoveSpeed: 50
+    SpellParameters:
+      Id: Fireball
+      MoveSpeed: 20
       Lifetime: 2
       Cooldown: 1
-      Damage: 10
-      IsLocked: 0
-    Id: Fireball
+      Damage: 15
   - SpellUIPrefab: {fileID: 4876073217705036260, guid: 6af79745997ef3f43b7c6251b420c644, type: 3}
     SpellPrefab: {fileID: 8218112560930062190, guid: 631f899bca8d54d40b3c06626265d2f6, type: 3}
-    Spell:
-      MoveSpeed: 20
-      Lifetime: 5
+    SpellParameters:
+      Id: Coldball
+      MoveSpeed: 25
+      Lifetime: 3
       Cooldown: 1
-      Damage: 20
-      IsLocked: 0
-    Id: ColdBall
+      Damage: 10

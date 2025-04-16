@@ -10,10 +10,10 @@ namespace Kdevaulo.MageDefend.Presentation
         [field: SerializeField] public Transform Parent { get; private set; }
         [field: SerializeField] public Camera Camera { get; private set; }
 
-        [field: SerializeField] public SpellsData SpellsData { get; private set; }
-        [field: SerializeField] public UnitsData EnemiesData { get; private set; }
-        [field: SerializeField] public UnitsData PlayerData { get; private set; }
-        [field: SerializeField] public EnemyData EnemiesVisualData { get; private set; }
+        [field: SerializeField] public SpellsConfig SpellsConfig { get; private set; }
+        [field: SerializeField] public UnitsConfig EnemiesConfig { get; private set; }
+        [field: SerializeField] public UnitsConfig PlayerConfig { get; private set; }
+        [field: SerializeField] public EnemyConfig EnemiesVisualData { get; private set; }
 
         [field: SerializeField] public PlayerView PlayerPrefab { get; private set; }
 

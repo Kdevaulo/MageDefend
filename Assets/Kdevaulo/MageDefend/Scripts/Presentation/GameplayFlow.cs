@@ -1,65 +1,40 @@
-﻿using System.Linq;
-
-using Kdevaulo.MageDefend.Model;
-
-using UnityEngine.Assertions;
-
-namespace Kdevaulo.MageDefend.Presentation
+﻿namespace Kdevaulo.MageDefend.Presentation
 {
     public class GameplayFlow
     {
         private const int MaxEnemiesCount = 10;
 
-        private EnemiesController _enemiesController;
-        private PlayerController _playerController;
-        private SpellController _spellController;
+        private readonly LocationController _locationController;
+        private readonly PlayerController _playerController;
 
-        private CameraFollower _cameraFollower;
-        private ContactHandler _contactHandler;
-        private InputSystem _playerInput;
+        private readonly InputSystem _playerInput;
 
-        private SpellsModel _spellsModel;
-        private UnitModel _playerModel;
-
-        public void Initialize(GameContext context)
+        public GameplayFlow(GameContext context)
         {
-            var playerDataset = context.PlayerData.Datasets.FirstOrDefault();
-            Assert.IsNotNull(playerDataset);
+            _locationController = new LocationController(context);
 
-            var playerView = UnityEngine.Object.Instantiate(context.PlayerPrefab, context.Parent);
-            _playerModel = new UnitModel(playerDataset);
             _playerInput = new InputSystem(context.PlayerInput);
-            _playerController = new PlayerController(_playerInput, _playerModel, playerView);
+            _playerController = new PlayerController(context, _playerInput, _locationController);
+        }
 
-            _spellsModel = new SpellsModel(context.SpellsData.GetSpellParams());
-            _spellController = new SpellController(_playerInput, _spellsModel, context, _playerController);
-
-            _contactHandler = new ContactHandler(_playerModel);
-            _enemiesController = new EnemiesController(context, _playerController, _contactHandler);
-
-            _cameraFollower = context.CameraFollower;
-            _cameraFollower.SetTarget(playerView.transform);
-
+        public void Initialize()
+        {
+            _locationController.Initialize(MaxEnemiesCount);
             _playerController.Initialize();
-            _spellController.Initialize();
-            _enemiesController.Initialize(MaxEnemiesCount);
             _playerInput.Initialize();
         }
 
         public void Dispose()
         {
-            _enemiesController.Dispose();
+            _locationController.Dispose();
             _playerController.Dispose();
-            _spellController.Dispose();
             _playerInput.Dispose();
         }
 
         public void Tick()
         {
-            _enemiesController.Tick();
+            _locationController.Tick();
             _playerController.Tick();
-            _spellController.Tick();
-            _cameraFollower.Tick();
         }
     }
 }

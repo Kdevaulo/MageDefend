@@ -3,12 +3,12 @@
 namespace Kdevaulo.MageDefend.Model
 {
     [Serializable]
-    public class Spell
+    public class UnitParameters
     {
+        public string Id;
+        public float Hp;
+        public float Protection;
         public float MoveSpeed;
-        public float Lifetime;
-        public float Cooldown;
         public float Damage;
-        public bool IsLocked;
     }
 }

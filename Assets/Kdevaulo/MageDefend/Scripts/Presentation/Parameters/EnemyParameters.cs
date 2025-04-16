@@ -3,7 +3,7 @@
 namespace Kdevaulo.MageDefend.Presentation
 {
     [Serializable]
-    public class EnemyConfig
+    public class EnemyParameters
     {
         public string Id;
         public EnemyView EnemyPrefab;

@@ -2,16 +2,13 @@
 
 using Kdevaulo.MageDefend.Model;
 
-using UnityEngine;
-
 namespace Kdevaulo.MageDefend.Presentation
 {
     [Serializable]
-    public class SpellConfig
+    public class SpellVisual
     {
         public SpellUIView SpellUIPrefab;
         public SpellView SpellPrefab;
-        public Spell Spell;
-        public string Id;
+        public SpellParameters SpellParameters;
     }
 }

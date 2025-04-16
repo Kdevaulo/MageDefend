@@ -1,25 +1,22 @@
-﻿using System;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Kdevaulo.MageDefend.Presentation
 {
     [RequireComponent(typeof(GameContext))]
     public class EntryPoint : MonoBehaviour
     {
+        [SerializeField] private GameContext _gameContext;
+
         private GameplayFlow _gameplayFlow;
-        private GameContext _gameContext;
 
         private void Awake()
         {
-            _gameplayFlow = new GameplayFlow();
-
-            _gameContext = GetComponent<GameContext>();
+            _gameplayFlow = new GameplayFlow(_gameContext);
         }
 
         private void Start()
         {
-            _gameplayFlow.Initialize(_gameContext);
+            _gameplayFlow.Initialize();
         }
 
         private void Update()

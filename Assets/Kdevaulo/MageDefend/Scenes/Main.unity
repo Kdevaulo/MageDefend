@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5e82899f0c44099440ceb515cb18ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameContext: {fileID: 7449361}
 --- !u!114 &7449361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,9 +192,9 @@ MonoBehaviour:
   <UISpellParent>k__BackingField: {fileID: 1156182595}
   <Parent>k__BackingField: {fileID: 7449359}
   <Camera>k__BackingField: {fileID: 963194227}
-  <SpellsData>k__BackingField: {fileID: 11400000, guid: 45b3aed3246c96e418f186e8701d5c1f, type: 2}
-  <EnemiesData>k__BackingField: {fileID: 11400000, guid: b3972be89d8f8ad40b9afe0fe797b7c0, type: 2}
-  <PlayerData>k__BackingField: {fileID: 11400000, guid: f7e95f08947fc4246bdc1cab00ae0392, type: 2}
+  <SpellsConfig>k__BackingField: {fileID: 11400000, guid: 45b3aed3246c96e418f186e8701d5c1f, type: 2}
+  <EnemiesConfig>k__BackingField: {fileID: 11400000, guid: b3972be89d8f8ad40b9afe0fe797b7c0, type: 2}
+  <PlayerConfig>k__BackingField: {fileID: 11400000, guid: f7e95f08947fc4246bdc1cab00ae0392, type: 2}
   <EnemiesVisualData>k__BackingField: {fileID: 11400000, guid: 0eea46a510e27f14992761c9fdd4b7ac, type: 2}
   <PlayerPrefab>k__BackingField: {fileID: 8437655960535279296, guid: 24064e7954285fb4a8314949341dd687, type: 3}
   <CameraFollower>k__BackingField: {fileID: 963194229}
