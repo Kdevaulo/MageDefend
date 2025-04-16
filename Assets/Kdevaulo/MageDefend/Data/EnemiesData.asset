@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Datasets:
   - Id: Zombie
-    Hp: 100
+    Hp: 1
     Protection: 0.5
     MoveSpeed: 5
     Damage: 10
   - Id: Lord
-    Hp: 50
+    Hp: 1
     Protection: 0.75
     MoveSpeed: 10
     Damage: 20
   - Id: Unicorn
-    Hp: 75
+    Hp: 1
     Protection: 1
-    MoveSpeed: 15
+    MoveSpeed: 7
     Damage: 15

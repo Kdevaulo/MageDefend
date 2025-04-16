@@ -15,6 +15,7 @@ namespace Kdevaulo.MageDefend.Presentation
         private SpellController _spellController;
 
         private CameraFollower _cameraFollower;
+        private ContactHandler _contactHandler;
         private InputSystem _playerInput;
 
         private SpellsModel _spellsModel;
@@ -34,7 +35,8 @@ namespace Kdevaulo.MageDefend.Presentation
             _spellController = new SpellController(_playerInput, _spellsModel, context.SpellsData,
                 context.Parent, _playerController);
 
-            _enemiesController = new EnemiesController(context, _playerController);
+            _contactHandler = new ContactHandler(_playerModel);
+            _enemiesController = new EnemiesController(context, _playerController, _contactHandler);
 
             _cameraFollower = context.CameraFollower;
             _cameraFollower.SetTarget(playerView.transform);

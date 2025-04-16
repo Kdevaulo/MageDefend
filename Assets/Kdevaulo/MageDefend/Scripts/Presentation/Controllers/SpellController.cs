@@ -10,7 +10,7 @@ namespace Kdevaulo.MageDefend.Presentation
 {
     public class SpellController
     {
-        private Dictionary<SpellModel, SpellView> _launchedSpells = new Dictionary<SpellModel, SpellView>();
+        public static Dictionary<SpellModel, SpellView> LaunchedSpells = new Dictionary<SpellModel, SpellView>();
 
         private readonly IPlayerContextProvider _playerContextProvider;
         private readonly SpellsModel _spellsModel;
@@ -45,7 +45,7 @@ namespace Kdevaulo.MageDefend.Presentation
         {
             var itemsToRemove = new List<SpellModel>();
 
-            foreach (var spellPair in _launchedSpells)
+            foreach (var spellPair in LaunchedSpells)
             {
                 var spellModel = spellPair.Key;
                 var spellView = spellPair.Value;
@@ -63,10 +63,10 @@ namespace Kdevaulo.MageDefend.Presentation
 
             foreach (var item in itemsToRemove)
             {
-                var view = _launchedSpells[item];
+                var view = LaunchedSpells[item];
                 view.gameObject.SetActive(false);
                 Object.Destroy(view.gameObject);
-                _launchedSpells.Remove(item);
+                LaunchedSpells.Remove(item);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Kdevaulo.MageDefend.Presentation
                 var view = Object.Instantiate(prefab, targetPosition, Quaternion.identity, _parent);
 
                 spell.SetDirection(_playerContextProvider.GetDirection().ToNumerics());
-                _launchedSpells.Add(spell, view);
+                LaunchedSpells.Add(spell, view);
             }
         }
 

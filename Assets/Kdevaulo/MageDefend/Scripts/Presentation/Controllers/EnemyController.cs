@@ -8,24 +8,28 @@ namespace Kdevaulo.MageDefend.Presentation
     {
         private const float MinFollowDistance = 0.01f;
 
+        private readonly ContactHandler _contactHandler;
         private readonly UnitModel _enemyModel;
         private readonly EnemyView _enemyView;
         private Transform _target;
 
-        public EnemyController(UnitModel enemyModel, EnemyView enemyView)
+        public EnemyController(UnitModel enemyModel, EnemyView enemyView, ContactHandler contactHandler)
         {
             _enemyModel = enemyModel;
             _enemyView = enemyView;
+            _contactHandler = contactHandler;
         }
 
         public void Initialize(Transform target)
         {
             _target = target;
+            _enemyView.CollisionEntered += SendContactInfo;
         }
 
         public void Dispose()
         {
             _target = null;
+            _enemyView.CollisionEntered -= SendContactInfo;
         }
 
         public void Tick()
@@ -36,9 +40,14 @@ namespace Kdevaulo.MageDefend.Presentation
 
                 if (direction.magnitude > MinFollowDistance)
                 {
-                    _enemyView.Move(direction.normalized * _enemyModel.MoveSpeed);
+                    _enemyView.Move(direction.normalized * _enemyModel.MoveSpeed.Value);
                 }
             }
+        }
+
+        private void SendContactInfo(Collision collision)
+        {
+            _contactHandler.HandleContact(_enemyView, collision.gameObject);
         }
     }
 }

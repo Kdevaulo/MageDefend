@@ -46,7 +46,7 @@ namespace Kdevaulo.MageDefend.Presentation
         {
             if (_canMove)
             {
-                var velocity = _playerModel.MoveSpeed * (Vector3) _moveDirection;
+                var velocity = _playerModel.MoveSpeed.Value * (Vector3) _moveDirection;
                 _playerView.Move(velocity);
             }
 

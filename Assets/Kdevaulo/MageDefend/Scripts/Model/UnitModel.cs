@@ -1,21 +1,34 @@
-using System.Numerics;
+using System;
 
 namespace Kdevaulo.MageDefend.Model
 {
     public class UnitModel
     {
         public string Id { get; private set; }
-        public float Protection { get; }
-        public float MoveSpeed { get; }
-        public float Damage { get; }
-        public float Hp { get; }
+        public UnitStat Protection;
+        public UnitStat MoveSpeed;
+        public UnitStat Damage;
+        public UnitStat Hp;
 
         public UnitModel(UnitConfig config)
         {
-            Protection = config.Protection;
-            MoveSpeed = config.MoveSpeed;
-            Damage = config.Damage;
-            Hp = config.Hp;
+            Protection = new UnitStat(config.Protection);
+            MoveSpeed = new UnitStat(config.MoveSpeed);
+            Damage = new UnitStat(config.Damage);
+            Hp = new UnitStat(config.Hp);
+        }
+
+        public void TakeDamage(float value)
+        {
+            var subtrahend = Math.Abs(value);
+            var targetValue = Hp.Value - subtrahend * Protection.Value;
+
+            if (targetValue < 0)
+            {
+                targetValue = 0;
+            }
+
+            Hp.Set(targetValue);
         }
     }
 }

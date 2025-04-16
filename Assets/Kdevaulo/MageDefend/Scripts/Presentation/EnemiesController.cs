@@ -14,6 +14,7 @@ namespace Kdevaulo.MageDefend.Presentation
     public class EnemiesController
     {
         private readonly IPlayerContextProvider _playerContextProvider;
+        private readonly ContactHandler _contactHandler;
         private readonly EnemyData _enemiesVisualData;
         private readonly UnitsData _unitsData;
         private readonly SpawnZone _spawnZone;
@@ -24,11 +25,13 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private int _maxCount;
 
-        public EnemiesController(GameContext gameContext, IPlayerContextProvider playerContextProvider)
+        public EnemiesController(GameContext gameContext, IPlayerContextProvider playerContextProvider,
+            ContactHandler contactHandler)
         {
             _playerContextProvider = playerContextProvider;
-            _unitsData = gameContext.EnemiesData;
             _enemiesVisualData = gameContext.EnemiesVisualData;
+            _contactHandler = contactHandler;
+            _unitsData = gameContext.EnemiesData;
             _spawnZone = gameContext.SpawnZone;
             _camera = gameContext.Camera;
             _parent = gameContext.Parent;
@@ -37,6 +40,7 @@ namespace Kdevaulo.MageDefend.Presentation
         public void Initialize(int count)
         {
             _maxCount = count;
+            _contactHandler.Initialize(_activeEnemies);
         }
 
         public void Dispose()
@@ -78,11 +82,10 @@ namespace Kdevaulo.MageDefend.Presentation
 
             var model = new UnitModel(chosenData);
             var view = Object.Instantiate(item.EnemyPrefab, position, Quaternion.identity, _parent);
-            var controller = new EnemyController(model, view);
+            var controller = new EnemyController(model, view, _contactHandler);
 
             var enemy = new Enemy(model, view, controller);
             _activeEnemies.Add(enemy);
-
             controller.Initialize(_playerContextProvider.Target);
         }
 
