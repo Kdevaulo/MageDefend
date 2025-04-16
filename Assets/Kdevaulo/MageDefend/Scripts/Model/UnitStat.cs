@@ -13,6 +13,11 @@
 
         public void Set(float value)
         {
+            if (value < 0)
+            {
+                value = 0;
+            }
+
             _value = value;
         }
     }

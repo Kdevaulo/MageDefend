@@ -4,23 +4,18 @@ namespace Kdevaulo.MageDefend.Model
 {
     public class SpellsModel
     {
-        private readonly SpellParameters[] _spellParameters;
+        private readonly SpellParameter[] _spellParameters;
 
-        public SpellsModel(SpellParameters[] spellParameters)
+        public SpellsModel(SpellParameter[] spellParameters)
         {
             _spellParameters = spellParameters;
         }
 
-        public bool TryGetSpellParameters(string id, out SpellParameters spellParameters)
+        public bool TryGetSpellParameters(string id, out SpellParameter spellParameter)
         {
-            spellParameters = _spellParameters.FirstOrDefault(x => x.Id == id);
+            spellParameter = _spellParameters.FirstOrDefault(x => x.Id == id);
 
-            return spellParameters != null;
-        }
-
-        public bool CanCast()
-        {
-            return true;
+            return spellParameter != null;
         }
     }
 }

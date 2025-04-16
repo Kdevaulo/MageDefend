@@ -3,12 +3,11 @@
 namespace Kdevaulo.MageDefend.Model
 {
     [Serializable]
-    public class SpellParameters
+    public class SpellParameter
     {
         public string Id;
         public float MoveSpeed;
         public float Lifetime;
-        public float Cooldown;
         public float Damage;
     }
 }

@@ -9,6 +9,6 @@ namespace Kdevaulo.MageDefend.Presentation
     {
         public SpellUIView SpellUIPrefab;
         public SpellView SpellPrefab;
-        public SpellParameters SpellParameters;
+        public SpellParameter SpellParameter;
     }
 }

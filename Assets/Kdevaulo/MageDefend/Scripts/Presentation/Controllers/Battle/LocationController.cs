@@ -14,55 +14,58 @@ namespace Kdevaulo.MageDefend.Presentation
 {
     public class LocationController
     {
-        public List<Enemy> ActiveEnemies = new List<Enemy>();
         public UnitModel PlayerModel => _playerModel;
         public PlayerView PlayerView => _playerView;
 
-        private readonly GameContext _gameContext;
+        private const int MaxEnemiesCount = 10;
+
+        private readonly List<Enemy> _activeEnemies = new List<Enemy>();
+
         private readonly EnemyConfig _enemiesVisualData;
-        private readonly UnitModel _playerModel;
+        private readonly GameContext _gameContext;
+        private readonly InputSystem _playerInput;
         private readonly UnitsConfig _unitsConfig;
         private readonly SpawnZone _spawnZone;
         private readonly Transform _parent;
         private readonly Camera _camera;
 
+        private PlayerController _playerController;
+        private UnitModel _playerModel;
         private PlayerView _playerView;
-
-        private int _maxCount;
 
         public LocationController(GameContext gameContext)
         {
-            _enemiesVisualData = gameContext.EnemiesVisualData;
             _gameContext = gameContext;
+            _enemiesVisualData = gameContext.EnemiesVisualData;
             _unitsConfig = gameContext.EnemiesConfig;
             _spawnZone = gameContext.SpawnZone;
             _camera = gameContext.Camera;
             _parent = gameContext.Parent;
-
-            var playerData = gameContext.PlayerConfig.Datasets.FirstOrDefault();
-            Assert.IsNotNull(playerData);
-            _playerModel = new UnitModel(playerData);
         }
 
-        public void Initialize(int count)
+        public void Initialize()
         {
-            _maxCount = count;
+            SpawnPlayer();
         }
 
         public void Dispose()
         {
-            foreach (var enemy in ActiveEnemies)
+            _playerController.Dispose();
+
+            foreach (var enemy in _activeEnemies)
             {
                 enemy.EnemyController?.Dispose();
                 Object.Destroy(enemy.EnemyView.gameObject);
             }
 
-            ActiveEnemies.Clear();
+            _activeEnemies.Clear();
         }
 
         public void Tick()
         {
-            if (ActiveEnemies.Count < _maxCount)
+            _playerController.Tick();
+
+            if (_activeEnemies.Count < MaxEnemiesCount)
             {
                 var bounds = _spawnZone.GetBounds();
 
@@ -76,15 +79,10 @@ namespace Kdevaulo.MageDefend.Presentation
                 SpawnEnemy(pointOnEdge);
             }
 
-            foreach (var enemy in ActiveEnemies)
+            foreach (var enemy in _activeEnemies)
             {
                 enemy.EnemyController.Tick();
             }
-        }
-
-        public void SpawnPlayer()
-        {
-            _playerView = Object.Instantiate(_gameContext.PlayerPrefab, _gameContext.Parent);
         }
 
         public UnitModel GetUnitModel(UnitView unitView)
@@ -94,20 +92,32 @@ namespace Kdevaulo.MageDefend.Presentation
                 return PlayerModel;
             }
 
-            var enemy = ActiveEnemies.FirstOrDefault(x => x.EnemyView == unitView as EnemyView);
+            var enemy = _activeEnemies.FirstOrDefault(x => x.EnemyView == unitView as EnemyView);
             return enemy?.EnemyModel;
         }
 
-        public void DestroyUnit(UnitModel model)
+        private void SpawnPlayer()
         {
-            var enemy = ActiveEnemies.FirstOrDefault(x => x.EnemyModel == model);
+            _playerView = Object.Instantiate(_gameContext.PlayerPrefab, _gameContext.Parent);
+            var playerData = _gameContext.PlayerConfig.Datasets.FirstOrDefault();
+            Assert.IsNotNull(playerData);
+            _playerModel = new UnitModel(playerData);
+            _playerModel.Died += () => Debug.Log("Game Over");
+
+            _playerController = new PlayerController(_gameContext, this, _playerView, _playerModel);
+            _playerController.Initialize();
+        }
+
+        private void DestroyUnit(UnitModel model)
+        {
+            var enemy = _activeEnemies.FirstOrDefault(x => x.EnemyModel == model);
 
             if (enemy == null)
                 return;
 
             enemy.EnemyController.Dispose();
             Object.Destroy(enemy.EnemyView.gameObject);
-            ActiveEnemies.Remove(enemy);
+            _activeEnemies.Remove(enemy);
         }
 
         private void SpawnEnemy(Vector3 position)
@@ -126,7 +136,8 @@ namespace Kdevaulo.MageDefend.Presentation
             var controller = new EnemyController(model, view, this);
 
             var enemy = new Enemy(model, view, controller);
-            ActiveEnemies.Add(enemy);
+            _activeEnemies.Add(enemy);
+            model.Died += () => DestroyUnit(model);
             controller.Initialize(_playerView.transform);
         }
 

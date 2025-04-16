@@ -4,10 +4,12 @@ namespace Kdevaulo.MageDefend.Model
 {
     public class UnitModel
     {
-        public UnitStat Protection;
-        public UnitStat MoveSpeed;
-        public UnitStat Damage;
-        public UnitStat Hp;
+        public event Action Died;
+
+        public readonly UnitStat Protection;
+        public readonly UnitStat MoveSpeed;
+        public readonly UnitStat Damage;
+        public readonly UnitStat Hp;
 
         public UnitModel(UnitParameters parameters)
         {
@@ -17,17 +19,17 @@ namespace Kdevaulo.MageDefend.Model
             Hp = new UnitStat(parameters.Hp);
         }
 
-        public void TakeDamage(float value)
+        public void Hit(float value)
         {
             var subtrahend = Math.Abs(value);
             var targetValue = Hp.Value - subtrahend * Protection.Value;
 
-            if (targetValue < 0)
-            {
-                targetValue = 0;
-            }
-
             Hp.Set(targetValue);
+
+            if (Hp.Value <= 0)
+            {
+                Died?.Invoke();
+            }
         }
     }
 }

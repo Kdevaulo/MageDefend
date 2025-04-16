@@ -20,14 +20,14 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private float _lifetime;
 
-        public SpellController(Vector3 direction, SpellParameters spellParameters, SpellView view,
+        public SpellController(Vector3 direction, SpellParameter spellParameter, SpellView view,
             LocationController locationController)
         {
             _locationController = locationController;
             _moveDirection = direction;
-            _moveSpeed = spellParameters.MoveSpeed;
-            _lifetime = spellParameters.Lifetime;
-            _damage = spellParameters.Damage;
+            _moveSpeed = spellParameter.MoveSpeed;
+            _lifetime = spellParameter.Lifetime;
+            _damage = spellParameter.Damage;
             _view = view;
         }
 
@@ -46,12 +46,7 @@ namespace Kdevaulo.MageDefend.Presentation
             if (collision.gameObject.TryGetComponent<EnemyView>(out var enemyView))
             {
                 var model = _locationController.GetUnitModel(enemyView);
-                model.TakeDamage(_damage);
-
-                if (model.Hp.Value <= 0)
-                {
-                    _locationController.DestroyUnit(model);
-                }
+                model.Hit(_damage);
             }
         }
 

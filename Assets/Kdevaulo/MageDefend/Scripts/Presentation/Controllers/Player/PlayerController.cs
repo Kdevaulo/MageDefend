@@ -20,14 +20,16 @@ namespace Kdevaulo.MageDefend.Presentation
         private Direction _currentDirection;
         private bool _canMove;
 
-        public PlayerController(GameContext gameContext, InputSystem playerInput, LocationController locationController)
+        public PlayerController(GameContext gameContext, LocationController locationController, PlayerView playerView,
+            UnitModel playerModel)
         {
             _locationController = locationController;
-            _playerInput = playerInput;
 
             _cameraFollower = gameContext.CameraFollower;
-            _playerModel = _locationController.PlayerModel;
+            _playerModel = playerModel;
+            _playerView = playerView;
 
+            _playerInput = new InputSystem(gameContext.PlayerInput);
             _spellsController = new SpellsController(_playerInput, gameContext, this, _locationController);
         }
 
@@ -38,10 +40,9 @@ namespace Kdevaulo.MageDefend.Presentation
 
             _moveDirection = Vector3Int.forward;
 
-            _locationController.SpawnPlayer();
-            _playerView = _locationController.PlayerView;
             _cameraFollower.SetTarget(_playerView.transform);
 
+            _playerInput.Initialize();
             _spellsController.Initialize();
         }
 
@@ -52,6 +53,7 @@ namespace Kdevaulo.MageDefend.Presentation
 
             _cameraFollower.SetTarget(null);
 
+            _playerInput.Dispose();
             _spellsController.Dispose();
         }
 

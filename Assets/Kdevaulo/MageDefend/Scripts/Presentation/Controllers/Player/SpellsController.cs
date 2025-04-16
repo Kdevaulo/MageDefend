@@ -93,7 +93,7 @@ namespace Kdevaulo.MageDefend.Presentation
             foreach (var config in _spellsConfig.Configs)
             {
                 var view = Object.Instantiate(config.SpellUIPrefab, _spellUIParent);
-                var id = config.SpellParameters.Id;
+                var id = config.SpellParameter.Id;
                 _preparedSpells[id] = view;
                 _spellsIds.Add(id);
             }
@@ -101,7 +101,7 @@ namespace Kdevaulo.MageDefend.Presentation
 
         private void Cast()
         {
-            if (_spellsModel.CanCast() && _spellsModel.TryGetSpellParameters(_chosenID, out var spell))
+            if (_spellsModel.TryGetSpellParameters(_chosenID, out var spell))
             {
                 var targetPosition = _locationController.PlayerView.transform.position;
                 var prefab = _spellsConfig.GetSpellPrefab(_chosenID);

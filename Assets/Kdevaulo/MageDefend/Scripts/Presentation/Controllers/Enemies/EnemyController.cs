@@ -23,13 +23,13 @@ namespace Kdevaulo.MageDefend.Presentation
         public void Initialize(Transform target)
         {
             _target = target;
-            _enemyView.CollisionEntered += HandleCollision;
+            _enemyView.CollisionEntered += OnCollisionEntered;
         }
 
         public void Dispose()
         {
             _target = null;
-            _enemyView.CollisionEntered -= HandleCollision;
+            _enemyView.CollisionEntered -= OnCollisionEntered;
         }
 
         public void Tick()
@@ -45,7 +45,7 @@ namespace Kdevaulo.MageDefend.Presentation
             }
         }
 
-        private void HandleCollision(Collision collision)
+        private void OnCollisionEntered(Collision collision)
         {
             if (collision.gameObject.TryGetComponent<PlayerView>(out var playerView))
             {
@@ -55,12 +55,7 @@ namespace Kdevaulo.MageDefend.Presentation
                     return;
 
                 var damage = _enemyModel.Damage.Value;
-                model.TakeDamage(damage);
-
-                if (model.Hp.Value <= 0)
-                {
-                    Debug.Log("Game Over");
-                }
+                model.Hit(damage);
             }
         }
     }

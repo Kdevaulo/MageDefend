@@ -14,14 +14,14 @@ namespace Kdevaulo.MageDefend.Presentation
 
         public SpellView GetSpellPrefab(string id)
         {
-            var config = Configs.FirstOrDefault(x => x.SpellParameters.Id == id);
+            var config = Configs.FirstOrDefault(x => x.SpellParameter.Id == id);
             Assert.IsNotNull(config);
             return config.SpellPrefab;
         }
 
-        public SpellParameters[] GetSpellParams()
+        public SpellParameter[] GetSpellParams()
         {
-            var parameters = Configs.Select(config => config.SpellParameters);
+            var parameters = Configs.Select(config => config.SpellParameter);
 
             return parameters.ToArray();
         }

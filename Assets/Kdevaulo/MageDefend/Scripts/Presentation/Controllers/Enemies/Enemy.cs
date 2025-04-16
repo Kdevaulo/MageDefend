@@ -4,9 +4,9 @@ namespace Kdevaulo.MageDefend.Presentation
 {
     public class Enemy
     {
-        public EnemyController EnemyController;
-        public UnitModel EnemyModel;
-        public EnemyView EnemyView;
+        public readonly EnemyController EnemyController;
+        public readonly UnitModel EnemyModel;
+        public readonly EnemyView EnemyView;
 
         public Enemy(UnitModel model, EnemyView view, EnemyController controller)
         {
