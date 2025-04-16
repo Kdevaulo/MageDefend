@@ -32,8 +32,7 @@ namespace Kdevaulo.MageDefend.Presentation
             _playerController = new PlayerController(_playerInput, _playerModel, playerView);
 
             _spellsModel = new SpellsModel(context.SpellsData.GetSpellParams());
-            _spellController = new SpellController(_playerInput, _spellsModel, context.SpellsData,
-                context.Parent, _playerController);
+            _spellController = new SpellController(_playerInput, _spellsModel, context, _playerController);
 
             _contactHandler = new ContactHandler(_playerModel);
             _enemiesController = new EnemiesController(context, _playerController, _contactHandler);

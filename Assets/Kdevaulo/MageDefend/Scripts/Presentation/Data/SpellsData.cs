@@ -17,7 +17,7 @@ namespace Kdevaulo.MageDefend.Presentation
         {
             var config = Configs.FirstOrDefault(x => x.Id == id);
             Assert.IsNotNull(config);
-            return config.SpellView;
+            return config.SpellPrefab;
         }
 
         public SpellParams[] GetSpellParams()

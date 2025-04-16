@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpellsData
   m_EditorClassIdentifier: 
   <Configs>k__BackingField:
-  - SpellView: {fileID: 8338304740296814051, guid: 7cb636cb6768620479306752553eea83, type: 3}
+  - SpellUIPrefab: {fileID: 8753742685954765270, guid: 066b76918a572f54a845b00e2875908a, type: 3}
+    SpellPrefab: {fileID: 8338304740296814051, guid: 7cb636cb6768620479306752553eea83, type: 3}
     Spell:
       MoveSpeed: 50
       Lifetime: 2
@@ -21,7 +22,8 @@ MonoBehaviour:
       Damage: 10
       IsLocked: 0
     Id: Fireball
-  - SpellView: {fileID: 8218112560930062190, guid: 631f899bca8d54d40b3c06626265d2f6, type: 3}
+  - SpellUIPrefab: {fileID: 4876073217705036260, guid: 6af79745997ef3f43b7c6251b420c644, type: 3}
+    SpellPrefab: {fileID: 8218112560930062190, guid: 631f899bca8d54d40b3c06626265d2f6, type: 3}
     Spell:
       MoveSpeed: 20
       Lifetime: 5
